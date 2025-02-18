@@ -1,13 +1,13 @@
 <?php
 include "/InterfaceArme.php";
-class Personnage{
+abstract class Personnage{
     //ATTRIBUT
-    public ?string $name;
-    public ?InterfaceArme $arme;
-    public ?string $classe;
+    protected string $nom;
+    protected InterfaceArme $arme;
+    protected string $classe;
 
     //CONSTRUCTEUR
-    public function __construct(string $name, ?string $arme, ?string $classe) {
+    public function __construct(string $name, ?InterfaceArme $arme, ?string $classe) {
         $this->name = $name;
         $this->arme = $arme;
         $this->classe = $classe;
@@ -22,7 +22,7 @@ class Personnage{
     public function getArme(): ?string{
         return $this->arme;
     }    
-    public function setArme(string $arme): Personnage{
+    public function setArme(InterfaceArme $arme): Personnage{
         $this->arme = $arme;
         return $this;
     }
@@ -34,7 +34,15 @@ class Personnage{
         return $this;
     }
     //METHODE
-    public function attaquer(){
-
+    public function attaquer(): void {
+        if ($this->arme instanceof ProjectileMagique) {
+            if ($this instanceof Magicien) {
+                $this->arme->attaquer();
+            } else {
+                echo "$this->nom ne peut pas utiliser un Projectile Magique !\n";
+            }
+        } else {
+            echo "$this->nom attaque avec " . get_class($this->arme) . " et inflige " . $this->arme->attaquer() . " points de dégâts !\n";
+        }
     }
 }
