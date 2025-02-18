@@ -1,6 +1,8 @@
 <?php
 class Magicien extends Personnage {
     private int $mana;
+    
+    //METHODE
     public function attaquer(): void {
         if ($this->arme instanceof ProjectileMagique) {
             if ($this->mana > 0) {

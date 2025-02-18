@@ -1,5 +1,5 @@
 <?php
-include "/InterfaceArme.php";
+include "InterfaceArme.php";
 abstract class Personnage{
     //ATTRIBUT
     protected string $nom;
@@ -7,19 +7,19 @@ abstract class Personnage{
     protected string $classe;
 
     //CONSTRUCTEUR
-    public function __construct(string $name, ?InterfaceArme $arme, ?string $classe) {
-        $this->name = $name;
+    public function __construct(string $nom, ?InterfaceArme $arme, ?string $classe) {
+        $this->nom = $nom;
         $this->arme = $arme;
         $this->classe = $classe;
     }
-    public function getName(): ?string{
-        return $this->name;
+    public function getNom(): ?string{
+        return $this->nom;
     }
-    public function setName(string $name): Personnage{
-        $this->name = $name;
+    public function setNom(string $nom): Personnage{
+        $this->nom = $nom;
         return $this;
     }
-    public function getArme(): ?string{
+    public function getArme(): ?InterfaceArme{
         return $this->arme;
     }    
     public function setArme(InterfaceArme $arme): Personnage{
