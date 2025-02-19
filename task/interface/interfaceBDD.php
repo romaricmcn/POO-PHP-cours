@@ -1,4 +1,4 @@
 <?php
-interface interfaceBDD{
-    public function connexion():string;
+interface InterfaceBDD{
+    public function connexion():?Object;
 }

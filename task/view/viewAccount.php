@@ -14,16 +14,17 @@ class ViewAccount implements interfaceView{
 
     //METHOD
     public function displayView():string{
-        ob_get_start();
+        ob_start();
         echo $this->getForm();
 ?>
 
         <section>
             <h1>Liste d'Utilisateurs</h1>
             <ul>
-                <?php echo $listUsers ?>
+                <?php echo $this->getListUsers() ?>
             </ul>
         </section>
 <?php
+        return ob_get_clean();
     }
 }
